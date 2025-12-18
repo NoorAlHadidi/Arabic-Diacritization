@@ -1,0 +1,18 @@
+WORKING = "/kaggle/working/"
+DATASET = "/kaggle/input/arabic/"
+# WORKING = "./"
+# DATASET = "./"
+# DATASET = "../dataset/"
+ARAVEC_MDL_PATH = "/kaggle/input/aravec-100/full_uni_cbow_100_wiki.mdl"
+
+
+ARAVEC_MODEL_PATH = "/kaggle/input/aravec-100/full_uni_cbow_100_wiki.mdl"
+TRAIN_DATASET_PATH = "/kaggle/input/diacritic-dataset/train.txt"
+TEST_DATASET_PATH = "/kaggle/input/diacritic-final-test/dataset_no_diacritics.txt" 
+VAL_DATASET_PATH   = "/kaggle/input/diacritic-dataset/val.txt"
+DICTIONARY_PATH = "/kaggle/working/cache/word_dictionary.pkl"
+OUTPUT_DIR = "/kaggle/working/checkpoints_word_context"
+CACHE_DIR  = "/kaggle/working/cache"
+BILSTM_ARAVEC_MODEL_PATH = "/kaggle/input/yarab-checkpoints/final_model.keras"
+DICTIONARY_INPUT_PATH = "/kaggle/input/yarab-checkpoints/word_dictionary.pkl"
+PREDICTIONS_CSV_PATH = "/kaggle/working/predictions.csv"
