@@ -41,6 +41,45 @@ def build_inputs_for_lines(lines, word_embedder):
 
     return model_inputs
 
+def save_diacritized_text(test_lines, all_predictions, output_path):
+    '''
+    Creates a text file with diacritized Arabic text.
+    
+    Args:
+        test_lines: original input lines (without diacritics, with delimiters)
+        all_predictions: list of [letter_id, diacritic_id] predictions
+    '''
+    index_to_diacritic = {v: k for k, v in diacritics_id.items()}
+    
+    diacritized_lines = []
+    prediction_index = 0
+    
+    for line in test_lines:
+        diacritized_line = ""
+        
+        for char in line:
+            if char in ["^", "$", " "]:
+                diacritized_line += char
+                continue
+            
+            if prediction_index < len(all_predictions):
+                _, diacritic_id = all_predictions[prediction_index]
+                diacritic_char = index_to_diacritic.get(diacritic_id, "")
+                
+                diacritized_line += char + diacritic_char
+                prediction_index += 1
+            else:
+                diacritized_line += char
+        
+        diacritized_line = diacritized_line.strip("^$")
+        diacritized_lines.append(diacritized_line)
+    
+    with open(output_path, "w", encoding="utf-8") as f:
+        for line in diacritized_lines:
+            f.write(line + "\n")
+    
+    print(f"\nDiacritized text saved to: {output_path}")
+
 
 if __name__ == "__main__":          
     test_lines = read_dataset(TEST_DATASET_PATH)
@@ -99,3 +138,6 @@ if __name__ == "__main__":
         writer.writerows(all_predictions)
 
     print(f"\nDone. Predictions saved to: {PREDICTIONS_CSV_PATH}")
+
+    diacritized_output_path = WORKING + "diacritized_output.txt"
+    save_diacritized_text(test_lines, all_predictions, diacritized_output_path)

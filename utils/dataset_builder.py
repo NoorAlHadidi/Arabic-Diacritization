@@ -32,6 +32,9 @@ def build_vocab(arabic_letters):
 letters_id = build_vocab(arabic_letters)
 
 def extract_letters_and_diacritics(text, diacritics, diacritics_id):
+    '''
+    Separates diacritic from letters and returns list of both separately.
+    '''
     letters = []
     labels = []
 
