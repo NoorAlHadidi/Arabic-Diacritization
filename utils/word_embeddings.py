@@ -76,18 +76,6 @@ class ArabicWordEmbedder:
     
 
     def get_sequence_embeddings(self, letters, word_indices):
-        """
-        Get word embeddings for each character position in a sequence.
-        
-        Args:
-            letters: List of characters (e.g., ['ذ', 'ه', 'ب', ' ', 'ع', 'ل', 'ي'])
-            word_indices: List of word indices per character (e.g., [0, 0, 0, -1, 1, 1, 1])
-            
-        Returns:
-            numpy array of shape (seq_len, embedding_dim)
-            Each character gets the embedding of the word it belongs to.
-            Spaces (word_index=-1) get the unknown vector.
-        """
         '''
         Get the word embeddings for each character position in a sequence.
         Inputs:
